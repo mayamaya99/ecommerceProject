@@ -44,6 +44,7 @@ const App = () => {
     <BrowserRouter>
       <Header allproducts={products} count={count} setSearchData={setSearchData} />
       <TopMenu />
+     
       <Suspense
         fallback={
           <div className="text-white text-center mt-3">Loading...</div>
@@ -52,12 +53,9 @@ const App = () => {
         <Routes>
           <Route path="" element={<ProductList allproducts={products} />} />
           <Route path="category/:cat" element={<ProductList allproducts={products} />} />
-
-          <Route path="product/detail/:id" element={<ProductDetail allproducts={products} shoppingCart={shoppingCart} updateCount={setCount} />} />
-
+           <Route path="product/detail/:id" element={<ProductDetail allproducts={products} shoppingCart={shoppingCart} updateCount={setCount} />} />
           <Route path="cart" element={<CartView shoppingCart={shoppingCart} updateCount={setCount} />} />
           <Route path="checkout" element={<CheckoutView shoppingCart={shoppingCart} count={count} />} />
-          
           <Route path="support" element={<SupportView />} />
           <Route path="return" element={<ReturnPolicy />} />
           <Route path="privacy" element={<Privacy />} />

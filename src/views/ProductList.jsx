@@ -7,13 +7,14 @@ export default function ProductList({ allproducts, match }) {
   const params = useParams();
   const cat = params.cat || "Animal";
   //Your code starts here
-  const products = [];
+  // const products = []?;
+  const product = (allproducts) ? allproducts.filter(item => item.category === cat) : [];
   //Your code ends here
 
   return (
     <>
       <div className="product center">
-        {products.map((product, i) => (
+        {product.map((product, i) => (
           <div key={product._id} className="card">
             <Link className="nav-link" to={"/product/detail/" + product._id}>
               <img className="medium" src={"/" + product.image} alt="product" />
