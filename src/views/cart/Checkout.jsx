@@ -6,8 +6,8 @@ import { ReactComponent as IconCart3 } from "bootstrap-icons/icons/cart3.svg";
 export default function CheckoutView({ shoppingCart }) {
  
    const products = Array.from(shoppingCart.products.values());//your code
-   const count = products.map(cartProduct => cartProduct.count);//your code
-   const totalCost = parseFloat(products.map(cartProduct  => cartProduct .product.price * cartProduct.count)).toFixed(2);//your code
+   const count = products.map(wrapper => wrapper.count);//your code
+   const totalCost = parseFloat(products.map(wrapper  => wrapper .product.price * wrapper.count)).toFixed(2);//your code
  
   
   return (
