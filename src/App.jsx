@@ -27,9 +27,10 @@ const HomeView = lazy(() => import("./views/Home"));
 
 const CartView = lazy(() => import("./views/cart/Cart"));
 const CheckoutView = lazy(() => import("./views/cart/Checkout"));
-
+const DocumentationView = lazy(() => import("./views/Documentation"));
 const NotFoundView = lazy(() => import("./views/pages/404"));
 const InternalServerErrorView = lazy(() => import("./views/pages/500"));
+const ContactUsView = lazy(() => import("./views/pages/ContactUs"));
 const SupportView = lazy(() => import("./views/pages/Support"));
 
 const products = data.products;
@@ -44,7 +45,6 @@ const App = () => {
     <BrowserRouter>
       <Header allproducts={products} count={count} setSearchData={setSearchData} />
       <TopMenu />
-     
       <Suspense
         fallback={
           <div className="text-white text-center mt-3">Loading...</div>
@@ -53,9 +53,13 @@ const App = () => {
         <Routes>
           <Route path="" element={<ProductList allproducts={products} />} />
           <Route path="category/:cat" element={<ProductList allproducts={products} />} />
-           <Route path="product/detail/:id" element={<ProductDetail allproducts={products} shoppingCart={shoppingCart} updateCount={setCount} />} />
+
+          <Route path="product/detail/:id" element={<ProductDetail allproducts={products} shoppingCart={shoppingCart} updateCount={setCount} />} />
+
           <Route path="cart" element={<CartView shoppingCart={shoppingCart} updateCount={setCount} />} />
           <Route path="checkout" element={<CheckoutView shoppingCart={shoppingCart} count={count} />} />
+          <Route path="documentation" element={<DocumentationView />} />
+          <Route path="contact-us" element={<ContactUsView />} />
           <Route path="support" element={<SupportView />} />
           <Route path="return" element={<ReturnPolicy />} />
           <Route path="privacy" element={<Privacy />} />
@@ -67,7 +71,7 @@ const App = () => {
           <Route element={<NotFoundView />} />
         </Routes>
       </Suspense>
-      <Footer allproducts={products} />
+      <Footer allproducts={products}/>
     </BrowserRouter>
 
   );
